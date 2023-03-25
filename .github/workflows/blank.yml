@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      # Runs node build
-      - name: Run build
-        run: npm run build
+      # Runs node install and build
+      - name: Run install
+        run: npm install
+      - name: Run Build
+        run: npm run build 
