@@ -1,0 +1,13 @@
+:root {
+    --primary-color: black;
+    --primary-text-color: white
+}
+
+html {
+    background: var(--primary-color);
+    color: var(--primary-text-color)
+}
+
+* {
+    box-sizing: border-box;
+}

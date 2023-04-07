@@ -1,0 +1,20 @@
+.container {
+  --items: 2;
+  --rows: 1;
+  width: 100vw;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max(200px, calc(100% / var(--items) - 10px)), 1fr)
+  );
+}
+
+.participant {
+  background: #424242;
+  min-height: calc(100vh / var(--rows));
+  & :global video {
+    width: 100%;
+    height: 100%;
+  }
+}

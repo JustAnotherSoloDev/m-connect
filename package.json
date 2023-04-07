@@ -6,17 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "buildActions": "tsc && (vite build --base=/m-connect)",
     "preview": "vite preview"
   },
   "dependencies": {
+    "peerjs": "^1.4.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0"
   },
   "devDependencies": {
-    "sass": "^1.60.0",
     "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react-swc": "^3.2.0",
+    "sass": "^1.60.0",
     "typescript": "^5.0.2",
     "vite": "^4.2.1"
   }
