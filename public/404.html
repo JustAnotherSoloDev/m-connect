@@ -4,8 +4,11 @@
     redirecting to room
 </body>
 <script>
-    let path=window.location.pathname;
-    let route=window.location.search.replace("?","");
-    window.location.href=path+"#"+route
+    let pathNameParts=window.location.pathname.split("/");
+    if(pathNameParts && pathNameParts.length>0){
+        let pathname=pathNameParts[1];
+        let route=window.location.search.replace("?","");
+        window.location.href=path+"#"+route
+    }
 </script>
 </html>
