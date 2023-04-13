@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <head></head>
 <body>
-    Page not found
+    redirecting to room
 </body>
-<script></script>
+<script>
+    let path=window.location.pathname;
+    let route=window.location.search.replace("?","");
+    window.location.href=path+"#"+route
+</script>
 </html>
