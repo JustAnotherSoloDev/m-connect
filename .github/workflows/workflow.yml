@@ -7,7 +7,7 @@ permissions:
 on:
   # Triggers the workflow on push request for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -29,9 +29,10 @@ jobs:
       - name: Run install
         run: npm install
       - name: Run Build
-        run: npm run buildActions 
+        run: npm run buildActions
+        #404 page is loaded if the route is not matched this will redirect it to index.html again
       - name: Copy index as 404.html
-        run : cp dist/index.html dist/404.html
+        run: cp dist/index.html dist/404.html
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:

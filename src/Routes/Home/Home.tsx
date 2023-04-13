@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { useUserStore } from "../../Store/user/user";
 import cssStyles from "./Home.module.scss";
 import { Button } from "../../Components/button";
@@ -10,14 +10,6 @@ export const Home = () => {
   const handler = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setSesstionId(evt.currentTarget.value);
   };
-  const { hash } = useLocation();
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (hash) {
-      navigate("/Session?sessionId=" + hash.replace("#", ""));
-    }
-  }, [hash]);
-
   return (
     <main className={cssStyles["home"]}>
       <header>
