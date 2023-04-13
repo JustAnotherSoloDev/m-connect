@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { WaitingArea } from "../Waiting/Waiting";
-import { startSessionWithPeer } from "../../Connection/Connection";
+import { startSessionWithPeer, toggleAudio } from "../../Connection/Connection";
 import {
   getMediaSessionForId,
   useParticipantsStore,
@@ -50,6 +50,7 @@ const SessionStart = ({
   sessionId: string;
 }) => {
   const { participants } = useParticipantsStore();
+  const [isMuted, setIsMuted] = useState(false);
   //Attach a Listener
   useEffect(() => {
     if (user?.id && sessionId && user.id !== sessionId) {
@@ -66,17 +67,41 @@ const SessionStart = ({
     }
   }, [participants.length]);
 
+  const toggleAudioForCurrentUser = () => {
+    toggleAudio(user?.id);
+  };
+
   return (
-    <div className={styles["container"]} ref={container}>
-      {participants.map((participant) => (
-        <div key={participant.id} className={styles["participant"]}>
-          <Video
-            id={participant.id as any}
-            MediaSessionState={participant.mediaSessionState}
-          />
+    <>
+      <div className={styles["container"]} ref={container}>
+        {participants.map((participant) => (
+          <div key={participant.id} className={styles["participant"]}>
+            <Video
+              id={participant.id as any}
+              MediaSessionState={participant.mediaSessionState}
+            />
+          </div>
+        ))}
+      </div>
+      <div className={styles["fab-container"]}>
+        <div className={styles["fab"]}>
+          <div className={styles["fab-icon"]}>
+            <button onClick={toggleAudioForCurrentUser} disabled={isMuted}>
+              Mute
+            </button>
+            <button onClick={toggleAudioForCurrentUser} disabled={!isMuted}>
+              unMute
+            </button>
+          </div>
         </div>
-      ))}
-    </div>
+        <div className={styles["fab"]}>
+          <div className={styles["fab-icon"]}></div>
+        </div>
+        <div className={styles["fab"]}>
+          <div className={styles["fab-icon"]}></div>
+        </div>
+      </div>
+    </>
   );
 };
 

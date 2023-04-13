@@ -11,6 +11,7 @@ export const Join = () => {
       return [...val];
     });
   const container = useRef<HTMLDivElement>(null);
+
   useLayoutEffect(() => {
     if (container.current) {
       const { columns, rows } = getGridSize(count.length);
@@ -20,20 +21,35 @@ export const Join = () => {
   }, [count]);
 
   return (
-    <div className={styles["container"]} ref={container}>
-      {count.map((x, index) => (
-        <div key={index} className={styles["participant"]}>
-          <video></video>
-          <div>
-            <button onClick={add}>add</button>
-            <button onClick={remove}>remove</button>
-            <button onClick={() => setCounter((x) => x + 1)}>
-              count={counter}
-            </button>
+    <>
+      <div className={styles["container"]} ref={container}>
+        {count.map((x, index) => (
+          <div key={index} className={styles["participant"]}>
+            <video></video>
+            <div>
+              <button onClick={add}>add</button>
+              <button onClick={remove}>remove</button>
+              <button onClick={() => setCounter((x) => x + 1)}>
+                count={counter}
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className={styles["fab-container"]}>
+        <div className={styles["fab"]}>
+          <div className={styles["fab-icon"]}>
+            <button onClick={() => {}}>Mute</button>
           </div>
         </div>
-      ))}
-    </div>
+        <div className={styles["fab"]}>
+          <div className={styles["fab-icon"]}></div>
+        </div>
+        <div className={styles["fab"]}>
+          <div className={styles["fab-icon"]}></div>
+        </div>
+      </div>
+    </>
   );
 };
 

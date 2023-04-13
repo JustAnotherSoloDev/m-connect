@@ -105,6 +105,18 @@ export const startSessionWithPeer = (participant: string) => {
   }
 };
 
+export const toggleAudio = (id: string) => {
+  let participantObj = getParticipants().find((x) => x.id === id);
+  if (participantObj && participantObj.mediaSessionState === "CONNECTED") {
+    const audioTrack = participantObj.mediaStream?.getAudioTracks()?.[0];
+    if (audioTrack) audioTrack.enabled = !audioTrack.enabled;
+    console.log(
+      audioTrack?.enabled,
+      participantObj.mediaStream?.getAudioTracks()
+    );
+  }
+};
+
 const establishNewMediaConnection = (participant: string) => {
   let media = navigator.mediaDevices.getUserMedia({
     audio: true,

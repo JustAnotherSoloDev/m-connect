@@ -18,3 +18,20 @@
     height: 100%;
   }
 }
+
+.fab-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.fab {
+  width: max-content;
+  border-radius: 100%;
+}
+
+.fab-icon {
+  width: 1em;
+  height: 1em;
+}
