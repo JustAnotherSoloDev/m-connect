@@ -6,7 +6,7 @@
 <script>
     let pathNameParts=window.location.pathname.split("/");
     if(pathNameParts && pathNameParts.length>0){
-        let pathname=pathNameParts[1];
+        let path=pathNameParts[1];
         let route=window.location.search.replace("?","");
         window.location.href=path+"#"+route
     }
