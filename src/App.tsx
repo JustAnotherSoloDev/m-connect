@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Session } from "./Routes/Session/Session";
 import { Join } from "./Routes/Join/Join";
 import { Home } from "./Routes/Home/Home";
-import { WaitingArea } from "./Routes/Waiting/Waiting";
 import { initializePeerConnection } from "./Connection/Connection";
 
 const router = createBrowserRouter(
@@ -19,10 +18,6 @@ const router = createBrowserRouter(
     {
       path: "/join",
       Component: Join,
-    },
-    {
-      path: "/wait",
-      Component: WaitingArea,
     },
   ],
   {

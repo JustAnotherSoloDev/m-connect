@@ -9,6 +9,8 @@ import {
 } from "../../Store/participants/participants";
 import { useUserStore } from "../../Store/user/user";
 import styles from "../Session/Session.module.scss";
+import { Button } from "../../Components/button";
+import { Mic } from "../../Components/Icons/Mic/Mic";
 
 export const Session = () => {
   const user = useUserStore();
@@ -69,6 +71,7 @@ const SessionStart = ({
 
   const toggleAudioForCurrentUser = () => {
     toggleAudio(user?.id);
+    setIsMuted((prevvalue) => !prevvalue);
   };
 
   return (
@@ -86,19 +89,10 @@ const SessionStart = ({
       <div className={styles["fab-container"]}>
         <div className={styles["fab"]}>
           <div className={styles["fab-icon"]}>
-            <button onClick={toggleAudioForCurrentUser} disabled={isMuted}>
-              Mute
-            </button>
-            <button onClick={toggleAudioForCurrentUser} disabled={!isMuted}>
-              unMute
-            </button>
+            <Button onClick={toggleAudioForCurrentUser}>
+              <Mic isDisabled={isMuted} />
+            </Button>
           </div>
-        </div>
-        <div className={styles["fab"]}>
-          <div className={styles["fab-icon"]}></div>
-        </div>
-        <div className={styles["fab"]}>
-          <div className={styles["fab-icon"]}></div>
         </div>
       </div>
     </>
@@ -124,7 +118,6 @@ const Video = ({
   return (
     <>
       <video ref={videoRef}></video>
-      <div>{id}</div>
     </>
   );
 };
