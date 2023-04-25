@@ -8,14 +8,19 @@
   display: inline-block;
   line-height: 1.5;
   overflow: hidden;
-  padding: 0px 24px;
+  padding: 0.1rem 2rem;
   position: relative;
   text-align: center;
   user-select: none;
   border-radius: 20px;
+  font-size:1rem;
 }
 
 .btn:hover,
 .btn:focus {
   opacity: 0.75;
+}
+
+.btn-icon{
+  padding:1rem;
 }

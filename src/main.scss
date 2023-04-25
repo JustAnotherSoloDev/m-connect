@@ -25,8 +25,30 @@ body {
   width: 100%;
   padding: 0.5em;
   display: block;
-  outline-color: var(--primary-accent-color);
+  &:focus {
+    outline: 1px solid var(--primary-accent-color);
+  }
 }
 .form-error {
   color: red;
+}
+
+//Utility classes
+.flex {
+  display: flex;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+.full-height {
+  min-height: 100vh;
+}
+.flex-direction-column {
+  flex-direction: column;
+}
+video {
+  background: black;
 }

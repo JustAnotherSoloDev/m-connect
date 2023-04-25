@@ -9,20 +9,20 @@ import {
 } from "../../Store/participants/participants";
 import { useUserStore } from "../../Store/user/user";
 import styles from "../Session/Session.module.scss";
-import { Button } from "../../Components/button";
+import { Button, IconButton } from "../../Components/button";
 import { Mic } from "../../Components/Icons/Mic/Mic";
 
 export const Session = () => {
   const user = useUserStore();
   const { participants } = useParticipantsStore();
-  const particioantsActions = useParticipantsStoreActions();
+  const participantsActions = useParticipantsStoreActions();
   const [searchParams] = useSearchParams();
   const [sessionId] = useState(() => searchParams.get("sessionId"));
   useEffect(() => {
     if (sessionId && user?.id && sessionId !== user.id) {
-      particioantsActions.addParticipents({
+      participantsActions.addParticipants({
         id: sessionId,
-        mediaSessionState: "NOT_CONECTED",
+        mediaSessionState: "NOT_CONNECTED",
       });
     }
   }, [sessionId, user?.id]);
@@ -34,7 +34,7 @@ export const Session = () => {
     return <div>Please wait</div>;
   }
 
-  if (user.id === sessionId && (participants?.length ?? 0) < 1) {
+  if (user.id === sessionId && (participants?.length ?? 0) < 2) {
     return <WaitingArea />;
   }
   if (participants.length > 0) {
@@ -71,7 +71,7 @@ const SessionStart = ({
 
   const toggleAudioForCurrentUser = () => {
     toggleAudio(user?.id);
-    setIsMuted((prevvalue) => !prevvalue);
+    setIsMuted((prevValue) => !prevValue);
   };
 
   return (
@@ -89,9 +89,9 @@ const SessionStart = ({
       <div className={styles["fab-container"]}>
         <div className={styles["fab"]}>
           <div className={styles["fab-icon"]}>
-            <Button onClick={toggleAudioForCurrentUser}>
+            <IconButton onClick={toggleAudioForCurrentUser}>
               <Mic isDisabled={isMuted} />
-            </Button>
+            </IconButton>
           </div>
         </div>
       </div>
@@ -132,8 +132,8 @@ function getGridSize(count: number) {
   const gridFactor = rows * columns;
   //check if the elements can be added to grid if not increase the row by 1
   if (gridFactor < count) {
-    //since with sqrt we are relative very close to a square marix add a new row means we definatly have
-    // a grid that can contain alll the elements.
+    //since with sqrt we are relative very close to a square matrix add a new row means we definitely have
+    // a grid that can contain all the elements.
     rows += 1;
   }
   return { columns, rows };

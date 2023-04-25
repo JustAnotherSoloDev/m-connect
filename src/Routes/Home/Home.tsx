@@ -4,7 +4,7 @@ import { useUserStore } from "../../Store/user/user";
 import cssStyles from "./Home.module.scss";
 import { Button } from "../../Components/button";
 
-const uuidregex = new RegExp(
+const uuidRegex = new RegExp(
   "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$"
 );
 
@@ -12,13 +12,13 @@ export const Home = () => {
   const navigate = useNavigate();
 
   const { id } = useUserStore();
-  const [sessionId, setSesstionId] = useState<string | undefined>();
+  const [sessionId, setSessionId] = useState<string | undefined>();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handler = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setSesstionId(evt.currentTarget.value);
+    setSessionId(evt.currentTarget.value);
   };
 
   const handleSubmit = (evt: React.FormEvent) => {
@@ -28,7 +28,7 @@ export const Home = () => {
       setErrorMessage("Value cannot be empty");
       return;
     }
-    if (!uuidregex.test(value)) {
+    if (!uuidRegex.test(value)) {
       setErrorMessage("Please enter correct room id");
       return;
     }
@@ -48,10 +48,7 @@ export const Home = () => {
           </NavLink>
         </div>
         <div className="join">
-          <div>
-            Or Enter the Room ID below to join an existing
-            room
-          </div>
+          <div>Or Enter the Room ID below to join an existing room</div>
           <form onSubmit={handleSubmit}>
             <input
               name="roomId"
@@ -63,7 +60,9 @@ export const Home = () => {
             {errorMessage ? (
               <div className="form-error">{errorMessage}</div>
             ) : null}
-            <Button type="submit">Join</Button>
+            <div>
+              <Button type="submit">Join</Button>
+            </div>
           </form>
         </div>
       </div>

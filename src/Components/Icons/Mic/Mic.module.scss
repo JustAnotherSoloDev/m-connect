@@ -1,6 +1,6 @@
 .mic-svg {
-  --main-color: var(--primary-text-color, white);
-  --secondary-color: var(--primary-color, black);
+  --main-color: var(--primary-accent-text-color, black);
+  --secondary-color: var(--primary-accent-color, white);
   fill: var(--body-color);
   width: 100%;
   transition: all 0.2s ease-out;
