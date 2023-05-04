@@ -1,0 +1,39 @@
+.mic-svg {
+  --main-color: var(--primary-accent-text-color, black);
+  --secondary-color: var(--primary-accent-color, white);
+  fill: var(--body-color);
+  width: 100%;
+  transition: all 0.2s ease-out;
+}
+
+.lower-body {
+  fill: var(--main-color);
+}
+
+.upper-body {
+  fill: var(--main-color);
+  opacity: 1;
+}
+
+.dots-body {
+  fill: var(--main-color);
+  opacity: 1;
+}
+
+.dots {
+  fill: var(--main-color);
+  opacity: 1;
+}
+.cut {
+  stroke: var(--secondary-color);
+  stroke-width: calc(var(--icon-width, 1em) * 0.2);
+  transition: stroke-dashoffset 0.2s ease-out;
+}
+.enabled {
+  stroke-dasharray: calc(var(--icon-width) * 3);
+  stroke-dashoffset: calc(var(--icon-width) * 3);
+}
+.disabled {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
